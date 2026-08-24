@@ -1,0 +1,18 @@
+name: AnyAnnounce
+version: 1.0.0
+main: me.ryy.anyannounce.AnyAnnounce
+api-version: 1.21
+author: Rian
+description: Menampilkan pesan pengumuman di tengah atas layar (boss bar) untuk semua pemain.
+
+commands:
+  announce:
+    description: Menampilkan pesan pengumuman di tengah atas layar semua pemain.
+    usage: /announce <pesan>
+    permission: anyannounce.announce
+    permission-message: "§cKamu tidak punya izin untuk menjalankan perintah ini."
+
+permissions:
+  anyannounce.announce:
+    description: Mengizinkan penggunaan perintah /announce
+    default: op
