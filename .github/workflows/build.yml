@@ -16,25 +16,17 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: "21"
           cache: maven
 
-      - name: Build dengan Maven
+      - name: Build plugin
         run: mvn clean package
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: AnyAnnounce-JAR
-          path: target/*.jar          location: '${{ env.GKE_ZONE }}'
-
-      # Build the Docker image
-      - name: 'Build and push Docker container'
-        run: |-
-          DOCKER_TAG="${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA}"
-
-          docker build \
-            --tag "${DOCKER_TAG}" \
+          path: target/*.jar            --tag "${DOCKER_TAG}" \
             --build-arg GITHUB_SHA="${GITHUB_SHA}" \
             --build-arg GITHUB_REF="${GITHUB_REF}" \
             .
